@@ -1,0 +1,3 @@
+class ScreenModel {
+  const ScreenModel();
+}

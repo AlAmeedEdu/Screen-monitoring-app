@@ -1,0 +1,3 @@
+class ScreenLogModel {
+  const ScreenLogModel();
+}

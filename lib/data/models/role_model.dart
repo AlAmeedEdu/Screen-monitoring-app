@@ -1,0 +1,3 @@
+class RoleModel {
+  const RoleModel();
+}

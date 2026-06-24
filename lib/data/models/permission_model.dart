@@ -1,0 +1,3 @@
+class PermissionModel {
+  const PermissionModel();
+}

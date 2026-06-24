@@ -1,0 +1,3 @@
+class TeacherModel {
+  const TeacherModel();
+}

@@ -1,0 +1,24 @@
+abstract final class AppRoutes {
+  static const splash = '/splash';
+  static const onboarding = '/onboarding';
+  static const login = '/login';
+  static const mainLayout = '/main-layout';
+  static const home = '/home';
+  static const screens = '/screens';
+  static const screenDetails = '/screens/details';
+  static const createScreen = '/screens/create';
+  static const screenLogs = '/screen-logs';
+  static const schools = '/schools';
+  static const schoolDetails = '/schools/details';
+  static const schoolClasses = '/schools/classes';
+  static const quickMonitor = '/quick-monitor';
+  static const teachers = '/teachers';
+  static const teacherDetails = '/teachers/details';
+  static const timetable = '/timetable';
+  static const roles = '/roles';
+  static const createRole = '/roles/create';
+  static const users = '/users';
+  static const userDetails = '/users/details';
+  static const createUser = '/users/create';
+  static const profile = '/profile';
+}
