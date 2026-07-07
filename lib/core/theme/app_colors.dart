@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يجمع قيما أو عناصر عامة تستخدم في أكثر من مكان داخل التطبيق.
 abstract final class AppColors {
   static const canvas = Color(0xFFF3F6F6);
   static const background = canvas;

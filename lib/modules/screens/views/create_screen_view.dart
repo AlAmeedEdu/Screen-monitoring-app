@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/create_screen_controller.dart';
 
+/// يبني شاشة CreateScreenView ويربطها بالـ controller أو البيانات الخاصة بها.
 class CreateScreenView extends GetView<CreateScreenController> {
   const CreateScreenView({super.key});
 

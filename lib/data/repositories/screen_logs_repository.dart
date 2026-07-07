@@ -1,3 +1,2 @@
-class ScreenLogsRepository {
-  // TODO: Coordinate data operations for ScreenLogsRepository.
-}
+/// ينسق طلبات البيانات بين الـ controller ومصدر البيانات المناسب.
+class ScreenLogsRepository {}

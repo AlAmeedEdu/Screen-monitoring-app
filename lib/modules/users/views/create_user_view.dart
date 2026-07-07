@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/create_user_controller.dart';
 
+/// يبني شاشة CreateUserView ويربطها بالـ controller أو البيانات الخاصة بها.
 class CreateUserView extends GetView<CreateUserController> {
   const CreateUserView({super.key});
 

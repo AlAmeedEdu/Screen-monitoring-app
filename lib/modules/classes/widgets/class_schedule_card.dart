@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg_icon.dart';
 
+/// يعرض بطاقة واجهة قابلة لإعادة الاستخدام داخل هذه الميزة.
 class ClassScheduleCard extends StatelessWidget {
   const ClassScheduleCard(
       {required this.section, required this.teacher, super.key});
@@ -18,7 +19,7 @@ class ClassScheduleCard extends StatelessWidget {
       height: 161,
       padding: const EdgeInsets.all(13),
       decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.colors.surface,
           borderRadius: BorderRadius.circular(AppRadius.md)),
       child: Column(
         children: [
@@ -37,14 +38,14 @@ class ClassScheduleCard extends StatelessWidget {
                   child: _InfoTile(
                       label: 'الوقت',
                       value: '09:25 الى 10:05',
-                      accent: AppColors.success,
+                      accent: context.colors.success,
                       height: 60)),
             ],
           ),
           const SizedBox(height: 7),
           Row(
             children: [
-              Expanded(
+              const Expanded(
                   child: _InfoTile(
                       label: 'وقت تسجيل الدخول', value: '09:26', large: true)),
               const SizedBox(width: 8),
@@ -57,6 +58,7 @@ class ClassScheduleCard extends StatelessWidget {
   }
 }
 
+/// يمثل جزءا داخليا صغيرا من الواجهة لفصل التفاصيل عن الملف الرئيسي.
 class _InfoTile extends StatelessWidget {
   const _InfoTile(
       {required this.label,
@@ -77,7 +79,7 @@ class _InfoTile extends StatelessWidget {
       height: height,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
       decoration: BoxDecoration(
-          color: AppColors.secondary50,
+          color: context.colors.surfaceSoft,
           borderRadius: BorderRadius.circular(AppRadius.sm)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,14 +88,14 @@ class _InfoTile extends StatelessWidget {
             textDirection: TextDirection.rtl,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const AppSvgIcon(AppAssets.sidebarIcon,
-                  color: Color(0xFF62BBC1), size: 13),
+              AppSvgIcon(AppAssets.sidebarIcon,
+                  color: context.colors.accent, size: 13),
               const SizedBox(width: 3),
               Text(label,
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
                   style: AppTextStyles.tiny
-                      .copyWith(color: const Color(0xFF62BBC1))),
+                      .copyWith(color: context.colors.accent)),
             ],
           ),
           const Spacer(),
@@ -105,11 +107,11 @@ class _InfoTile extends StatelessWidget {
             textDirection: TextDirection.rtl,
             style: large
                 ? AppTextStyles.title.copyWith(
-                    color: const Color(0xFF39A8B3),
+                    color: context.colors.accent,
                     fontSize: 29,
                     fontWeight: FontWeight.w700)
                 : AppTextStyles.caption.copyWith(
-                    color: accent ?? const Color(0xFF52595A),
+                    color: accent ?? context.colors.primaryText,
                     fontWeight: FontWeight.w500),
           ),
         ],

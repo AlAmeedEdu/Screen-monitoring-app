@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يعرض عنصر تفاعل صغير موحد الشكل داخل الواجهة.
 class AppButton extends StatelessWidget {
   const AppButton({super.key});
 

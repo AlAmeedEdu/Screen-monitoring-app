@@ -1,3 +1,4 @@
+/// يمثل شكل بيانات AttendanceSummaryModel التي تنتقل بين طبقة البيانات والواجهة.
 class AttendanceSummaryModel {
   const AttendanceSummaryModel({
     required this.title,
@@ -14,6 +15,7 @@ class AttendanceSummaryModel {
   final bool isPositive;
 }
 
+/// يمثل شكل بيانات LatestTeacherLoginModel التي تنتقل بين طبقة البيانات والواجهة.
 class LatestTeacherLoginModel {
   const LatestTeacherLoginModel({
     required this.teacherName,
@@ -28,6 +30,7 @@ class LatestTeacherLoginModel {
   final String asset;
 }
 
+/// يمثل شكل بيانات HomeScreenStatModel التي تنتقل بين طبقة البيانات والواجهة.
 class HomeScreenStatModel {
   const HomeScreenStatModel({
     required this.title,
@@ -40,6 +43,7 @@ class HomeScreenStatModel {
   final String asset;
 }
 
+/// يمثل شكل بيانات HomeDashboardModel التي تنتقل بين طبقة البيانات والواجهة.
 class HomeDashboardModel {
   const HomeDashboardModel({
     required this.userName,

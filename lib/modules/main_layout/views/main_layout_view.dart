@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../classes/views/classes_view.dart';
 import '../../home/views/home_view.dart';
 import '../../profile/views/profile_view.dart';
@@ -9,6 +8,7 @@ import '../../screens/views/screens_view.dart';
 import '../controllers/main_layout_controller.dart';
 import '../widgets/main_bottom_nav.dart';
 
+/// يبني شاشة MainLayoutView ويربطها بالـ controller أو البيانات الخاصة بها.
 class MainLayoutView extends GetView<MainLayoutController> {
   const MainLayoutView({super.key});
 
@@ -16,7 +16,7 @@ class MainLayoutView extends GetView<MainLayoutController> {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: context.colors.canvas,
         body: Stack(
           children: [
             Positioned.fill(

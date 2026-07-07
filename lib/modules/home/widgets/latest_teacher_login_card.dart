@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../data/models/home_dashboard_model.dart';
 
+/// يعرض بطاقة واجهة قابلة لإعادة الاستخدام داخل هذه الميزة.
 class LatestTeacherLoginCard extends StatelessWidget {
   const LatestTeacherLoginCard({required this.login, super.key});
 
@@ -17,7 +18,7 @@ class LatestTeacherLoginCard extends StatelessWidget {
       height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       decoration: BoxDecoration(
-        color: AppColors.secondary50,
+        color: context.colors.surfaceSoft,
         borderRadius: BorderRadius.circular(AppRadius.md),
       ),
       child: Directionality(
@@ -49,7 +50,7 @@ class LatestTeacherLoginCard extends StatelessWidget {
                       textAlign: TextAlign.right,
                       textDirection: TextDirection.rtl,
                       style: AppTextStyles.caption.copyWith(
-                        color: AppColors.textPrimary,
+                        color: context.colors.primaryText,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -59,7 +60,7 @@ class LatestTeacherLoginCard extends StatelessWidget {
                       textAlign: TextAlign.right,
                       textDirection: TextDirection.rtl,
                       style: AppTextStyles.tiny
-                          .copyWith(color: const Color(0xFF98A0A1)),
+                          .copyWith(color: context.colors.secondaryText),
                     ),
                   ],
                 ),

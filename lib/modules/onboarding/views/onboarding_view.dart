@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/onboarding_controller.dart';
 
+/// يبني شاشة OnboardingView ويربطها بالـ controller أو البيانات الخاصة بها.
 class OnboardingView extends GetView<OnboardingController> {
   const OnboardingView({super.key});
 

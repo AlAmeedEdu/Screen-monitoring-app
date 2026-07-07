@@ -3,12 +3,13 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_shadows.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg_icon.dart';
 
+/// يمثل MainBottomNav كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
 class MainBottomNav extends StatelessWidget {
   const MainBottomNav({
     required this.currentIndex,
@@ -21,16 +22,25 @@ class MainBottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final colors = context.colors;
+    final navWidth = screenWidth - 40;
+    const selectedItemWidth = 51.0;
+    const horizontalPadding = 20.0;
+    const totalGap = 24.0;
+    final unselectedItemWidth =
+        (navWidth - horizontalPadding - totalGap - selectedItemWidth) / 3;
+
     return SafeArea(
       top: false,
       minimum: const EdgeInsets.only(bottom: 2),
       child: Center(
         child: Container(
           height: 67,
-          width: 293,
+          width: navWidth,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadius.pill),
-            boxShadow: AppShadows.soft,
+            boxShadow: AppShadows.softFor(context),
           ),
           child: CustomPaint(
             foregroundPainter: const _GradientBorderPainter(),
@@ -40,13 +50,13 @@ class MainBottomNav extends StatelessWidget {
                 filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color(0x80F7FAFA),
-                        Color(0x66EAF2F3),
+                        colors.surface.withValues(alpha: .72),
+                        colors.surfaceSoft.withValues(alpha: .58),
                       ],
                     ),
                   ),
@@ -58,6 +68,8 @@ class MainBottomNav extends StatelessWidget {
                           label: 'الحساب',
                           asset: AppAssets.userIcon,
                           selected: currentIndex == 0,
+                          selectedWidth: selectedItemWidth,
+                          unselectedWidth: unselectedItemWidth,
                           onTap: () => onTap(0),
                         ),
                         const SizedBox(width: 8),
@@ -65,6 +77,8 @@ class MainBottomNav extends StatelessWidget {
                           label: 'الصفوف',
                           asset: AppAssets.libraryIcon,
                           selected: currentIndex == 1,
+                          selectedWidth: selectedItemWidth,
+                          unselectedWidth: unselectedItemWidth,
                           onTap: () => onTap(1),
                         ),
                         const SizedBox(width: 8),
@@ -72,6 +86,8 @@ class MainBottomNav extends StatelessWidget {
                           label: 'الشاشات',
                           asset: AppAssets.monitorIcon,
                           selected: currentIndex == 2,
+                          selectedWidth: selectedItemWidth,
+                          unselectedWidth: unselectedItemWidth,
                           onTap: () => onTap(2),
                         ),
                         const SizedBox(width: 8),
@@ -79,6 +95,8 @@ class MainBottomNav extends StatelessWidget {
                           label: 'الرئيسية',
                           asset: AppAssets.homeIcon,
                           selected: currentIndex == 3,
+                          selectedWidth: selectedItemWidth,
+                          unselectedWidth: unselectedItemWidth,
                           onTap: () => onTap(3),
                         ),
                       ],
@@ -94,22 +112,28 @@ class MainBottomNav extends StatelessWidget {
   }
 }
 
+/// يمثل جزءا داخليا صغيرا من الواجهة لفصل التفاصيل عن الملف الرئيسي.
 class _NavItem extends StatelessWidget {
   const _NavItem({
     required this.label,
     required this.asset,
     required this.selected,
+    required this.selectedWidth,
+    required this.unselectedWidth,
     required this.onTap,
   });
 
   final String label;
   final String asset;
   final bool selected;
+  final double selectedWidth;
+  final double unselectedWidth;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    final color = selected ? const Color(0xFF42AEB7) : AppColors.inactive;
+    final colors = context.colors;
+    final color = selected ? colors.accent : colors.inactive;
 
     return Semantics(
       button: true,
@@ -119,26 +143,34 @@ class _NavItem extends StatelessWidget {
         duration: const Duration(milliseconds: 220),
         curve: Curves.easeOutCubic,
         height: 51,
-        width: selected ? 51 : 66,
+        width: selected ? selectedWidth : unselectedWidth,
         decoration: BoxDecoration(
           gradient: selected
-              ? const LinearGradient(
+              ? LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Color(0xFAFFFFFF), Color(0xE8FFFFFF)],
+                  colors: [
+                    colors.surface.withValues(alpha: .98),
+                    colors.surface.withValues(alpha: .9),
+                  ],
                 )
-              : const LinearGradient(
+              : LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Color(0xB8EEF2F2), Color(0x99E1E7E8)],
+                  colors: [
+                    colors.surfaceSoft.withValues(alpha: .78),
+                    colors.surfaceSoft.withValues(alpha: .58),
+                  ],
                 ),
           borderRadius: BorderRadius.circular(AppRadius.pill),
           boxShadow: selected
-              ? const [
+              ? [
                   BoxShadow(
-                    color: Color(0x100F363B),
-                    blurRadius: 8,
-                    offset: Offset(0, 2),
+                    color: context.isAppDarkMode
+                        ? Colors.black.withValues(alpha: .32)
+                        : const Color(0x100F363B),
+                    blurRadius: context.isAppDarkMode ? 12 : 8,
+                    offset: const Offset(0, 2),
                   ),
                 ]
               : null,
@@ -160,7 +192,7 @@ class _NavItem extends StatelessWidget {
                       key: const ValueKey('unselected'),
                       textDirection: TextDirection.rtl,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 7),
+                        padding: const EdgeInsets.symmetric(horizontal: 9),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
@@ -191,9 +223,11 @@ class _NavItem extends StatelessWidget {
   }
 }
 
+/// يمثل جزءا داخليا صغيرا من الواجهة لفصل التفاصيل عن الملف الرئيسي.
 class _GradientBorderPainter extends CustomPainter {
   const _GradientBorderPainter();
 
+  /// يرسم الشكل المخصص على الـ canvas الخاص بالواجهة.
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Offset.zero & size;
@@ -219,6 +253,7 @@ class _GradientBorderPainter extends CustomPainter {
     );
   }
 
+  /// يحدد هل يحتاج الرسم المخصص إلى إعادة رسم عند تغير البيانات.
   @override
   bool shouldRepaint(covariant _GradientBorderPainter oldDelegate) => false;
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
+import '../theme/app_palette.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_text_styles.dart';
 import 'app_svg_icon.dart';
 
+/// يعرض حقل إدخال موحد الشكل ويستقبل النص من المستخدم.
 class AppTextField extends StatefulWidget {
   const AppTextField({
     required this.controller,
@@ -13,15 +14,18 @@ class AppTextField extends StatefulWidget {
     super.key,
     this.obscureText = false,
     this.suffix,
+    this.suffixBuilder,
+    this.leadingIcon,
     this.height = 51,
     this.radius = AppRadius.md,
     this.borderColor,
-    this.focusedBorderColor = const Color(0xFF42AEB7),
-    this.fillColor = AppColors.surface,
-    this.focusedFillColor = const Color(0xFFEFFBFC),
+    this.focusedBorderColor,
+    this.fillColor,
+    this.focusedFillColor,
     this.hintFontSize = 14,
-    this.iconColor = AppColors.primary,
-    this.focusedIconColor = const Color(0xFF42AEB7),
+    this.horizontalPadding = 20,
+    this.iconColor,
+    this.focusedIconColor,
   });
 
   final TextEditingController controller;
@@ -29,20 +33,24 @@ class AppTextField extends StatefulWidget {
   final String iconAsset;
   final bool obscureText;
   final Widget? suffix;
+  final Widget Function(bool isFocused)? suffixBuilder;
+  final Widget? leadingIcon;
   final double height;
   final double radius;
   final Color? borderColor;
-  final Color focusedBorderColor;
-  final Color fillColor;
-  final Color focusedFillColor;
+  final Color? focusedBorderColor;
+  final Color? fillColor;
+  final Color? focusedFillColor;
   final double hintFontSize;
-  final Color iconColor;
-  final Color focusedIconColor;
+  final double horizontalPadding;
+  final Color? iconColor;
+  final Color? focusedIconColor;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
 }
 
+/// يجمع قيما أو عناصر عامة تستخدم في أكثر من مكان داخل التطبيق.
 class _AppTextFieldState extends State<AppTextField> {
   final FocusNode _focusNode = FocusNode();
 
@@ -68,11 +76,16 @@ class _AppTextFieldState extends State<AppTextField> {
   @override
   Widget build(BuildContext context) {
     final isFocused = _focusNode.hasFocus;
+    final colors = context.colors;
     final effectiveBorderColor = isFocused
-        ? widget.focusedBorderColor
-        : widget.borderColor ?? const Color(0xFFECEEEF);
-    final effectiveIconColor =
-        isFocused ? widget.focusedIconColor : widget.iconColor;
+        ? widget.focusedBorderColor ?? colors.accent
+        : widget.borderColor ?? colors.border;
+    final effectiveIconColor = isFocused
+        ? widget.focusedIconColor ?? colors.accent
+        : widget.iconColor ?? colors.icon;
+    final effectiveFillColor = isFocused
+        ? widget.focusedFillColor ?? colors.accentSoft
+        : widget.fillColor ?? colors.surface;
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -80,28 +93,31 @@ class _AppTextFieldState extends State<AppTextField> {
         duration: const Duration(milliseconds: 180),
         curve: Curves.easeOut,
         height: widget.height,
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: widget.horizontalPadding),
         decoration: BoxDecoration(
-          color: isFocused ? widget.focusedFillColor : widget.fillColor,
+          color: effectiveFillColor,
           borderRadius: BorderRadius.circular(widget.radius),
           border: Border.all(color: effectiveBorderColor),
           boxShadow: isFocused
-              ? const [
+              ? [
                   BoxShadow(
-                    color: Color(0x1A42AEB7),
-                    blurRadius: 14,
-                    offset: Offset(0, 4),
+                    color: context.isAppDarkMode
+                        ? Colors.black.withValues(alpha: .28)
+                        : const Color(0x1A42AEB7),
+                    blurRadius: context.isAppDarkMode ? 18 : 14,
+                    offset: const Offset(0, 4),
                   ),
                 ]
               : null,
         ),
         child: Row(
           children: [
-            AppSvgIcon(
-              widget.iconAsset,
-              color: effectiveIconColor,
-              size: widget.hintFontSize + 8,
-            ),
+            widget.leadingIcon ??
+                AppSvgIcon(
+                  widget.iconAsset,
+                  color: effectiveIconColor,
+                  size: widget.hintFontSize + 8,
+                ),
             const SizedBox(width: 12),
             Expanded(
               child: TextField(
@@ -111,23 +127,23 @@ class _AppTextFieldState extends State<AppTextField> {
                 textAlign: TextAlign.right,
                 textDirection: TextDirection.rtl,
                 style: AppTextStyles.body.copyWith(
-                  color: AppColors.textPrimary,
+                  color: colors.primaryText,
                   fontSize: widget.hintFontSize,
                   fontWeight: FontWeight.w400,
                 ),
                 decoration: InputDecoration.collapsed(
                   hintText: widget.hintText,
                   hintStyle: AppTextStyles.body.copyWith(
-                    color: AppColors.textHint,
+                    color: colors.hintText,
                     fontSize: widget.hintFontSize,
                     fontWeight: FontWeight.w300,
                   ),
                 ),
               ),
             ),
-            if (widget.suffix != null) ...[
+            if (widget.suffixBuilder != null || widget.suffix != null) ...[
               const SizedBox(width: 12),
-              widget.suffix!,
+              widget.suffixBuilder?.call(isFocused) ?? widget.suffix!,
             ],
           ],
         ),

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg_icon.dart';
 import '../../../core/widgets/blurred_header_image.dart';
 import '../widgets/class_schedule_card.dart';
 
+/// يبني شاشة ClassesView ويربطها بالـ controller أو البيانات الخاصة بها.
 class ClassesView extends StatelessWidget {
   const ClassesView({super.key});
 
@@ -36,8 +37,10 @@ class ClassesView extends StatelessWidget {
                     children: [
                       Text('الصف الاول الابتدائي',
                           textAlign: TextAlign.right,
-                          style: AppTextStyles.body
-                              .copyWith(fontWeight: FontWeight.w500)),
+                          style: AppTextStyles.body.copyWith(
+                            color: context.colors.primaryText,
+                            fontWeight: FontWeight.w500,
+                          )),
                       const SizedBox(height: 8),
                       for (var index = 0; index < items.length; index++) ...[
                         ClassScheduleCard(
@@ -46,8 +49,10 @@ class ClassesView extends StatelessWidget {
                           const SizedBox(height: 13),
                           Text('الصف الاول الابتدائي',
                               textAlign: TextAlign.right,
-                              style: AppTextStyles.body
-                                  .copyWith(fontWeight: FontWeight.w500)),
+                              style: AppTextStyles.body.copyWith(
+                                color: context.colors.primaryText,
+                                fontWeight: FontWeight.w500,
+                              )),
                         ],
                         const SizedBox(height: 12),
                       ],
@@ -63,6 +68,7 @@ class ClassesView extends StatelessWidget {
   }
 }
 
+/// يبني ترويسة هذا القسم ويجمع عناصرها البصرية في مكان واحد.
 class _ClassesHeader extends StatelessWidget {
   const _ClassesHeader();
 
@@ -97,12 +103,14 @@ class _ClassesHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text('أبتدائية القمر للبنات',
-                    style: AppTextStyles.title
-                        .copyWith(fontSize: 19, fontWeight: FontWeight.w800)),
+                    style: AppTextStyles.title.copyWith(
+                        color: context.colors.primaryText,
+                        fontSize: 19,
+                        fontWeight: FontWeight.w800)),
                 const SizedBox(height: 5),
                 Text('متابعة جميع صفوف المدرسة',
                     style: AppTextStyles.tiny
-                        .copyWith(color: const Color(0xFF596466))),
+                        .copyWith(color: context.colors.secondaryText)),
               ],
             ),
           ),
@@ -112,6 +120,7 @@ class _ClassesHeader extends StatelessWidget {
   }
 }
 
+/// يعرض عنصر تفاعل صغير موحد الشكل داخل الواجهة.
 class _HeaderButton extends StatelessWidget {
   const _HeaderButton(
       {this.asset, this.icon, required this.onTap, this.filled = false});
@@ -124,7 +133,7 @@ class _HeaderButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: filled ? const Color(0xFF62BBC1) : AppColors.surface,
+      color: filled ? context.colors.accent : context.colors.surface,
       borderRadius: BorderRadius.circular(AppRadius.md),
       child: InkWell(
         onTap: onTap,
@@ -135,10 +144,10 @@ class _HeaderButton extends StatelessWidget {
           child: Center(
             child: icon != null
                 ? Icon(icon,
-                    color: filled ? Colors.white : const Color(0xFF42AEB7),
+                    color: filled ? Colors.white : context.colors.accent,
                     size: 20)
                 : AppSvgIcon(asset!,
-                    color: filled ? Colors.white : const Color(0xFF42AEB7),
+                    color: filled ? Colors.white : context.colors.accent,
                     size: 20),
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يجمع قيما أو عناصر عامة تستخدم في أكثر من مكان داخل التطبيق.
 class AppAppBar extends StatelessWidget {
   const AppAppBar({super.key});
 

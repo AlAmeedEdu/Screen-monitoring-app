@@ -46,6 +46,7 @@ import '../modules/users/views/create_user_view.dart';
 import '../modules/users/views/user_details_view.dart';
 import '../modules/users/views/users_view.dart';
 
+/// يجمع قيما أو عناصر عامة تستخدم في أكثر من مكان داخل التطبيق.
 abstract final class AppPages {
   static const initial = AppRoutes.splash;
 

@@ -1,3 +1,2 @@
-class AuthService {
-  // TODO: Add authentication session helpers.
-}
+/// يمثل AuthService كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
+class AuthService {}

@@ -1,3 +1,4 @@
+/// يجمع قيما أو عناصر عامة تستخدم في أكثر من مكان داخل التطبيق.
 abstract final class AppRadius {
   static const xs = 4.0;
   static const sm = 8.0;

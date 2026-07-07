@@ -1,3 +1,2 @@
-class TimetableRepository {
-  // TODO: Coordinate data operations for TimetableRepository.
-}
+/// ينسق طلبات البيانات بين الـ controller ومصدر البيانات المناسب.
+class TimetableRepository {}

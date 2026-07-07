@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/roles_controller.dart';
 
+/// يبني شاشة RolesView ويربطها بالـ controller أو البيانات الخاصة بها.
 class RolesView extends GetView<RolesController> {
   const RolesView({super.key});
 

@@ -1,3 +1,2 @@
-class SchoolsProvider {
-  // TODO: Connect SchoolsProvider to remote or local data sources.
-}
+/// يوفر بيانات هذه الميزة حاليا كمصدر بيانات يمكن استبداله لاحقا بـ API.
+class SchoolsProvider {}

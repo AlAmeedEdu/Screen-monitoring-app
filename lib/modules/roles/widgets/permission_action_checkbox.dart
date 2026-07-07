@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يمثل PermissionActionCheckbox كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
 class PermissionActionCheckbox extends StatelessWidget {
   const PermissionActionCheckbox({super.key});
 

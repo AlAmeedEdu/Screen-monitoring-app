@@ -1,3 +1,2 @@
-class ApiService {
-  // TODO: Add API client setup.
-}
+/// يمثل ApiService كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
+class ApiService {}

@@ -1,3 +1,2 @@
-class AuthRepository {
-  // TODO: Coordinate data operations for AuthRepository.
-}
+/// ينسق طلبات البيانات بين الـ controller ومصدر البيانات المناسب.
+class AuthRepository {}

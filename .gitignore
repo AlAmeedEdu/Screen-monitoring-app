@@ -1,4 +1,5 @@
 .dart_tool/
+.codex-dart-tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages

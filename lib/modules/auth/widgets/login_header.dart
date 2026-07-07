@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يبني ترويسة هذا القسم ويجمع عناصرها البصرية في مكان واحد.
 class LoginHeader extends StatelessWidget {
   const LoginHeader({super.key});
 

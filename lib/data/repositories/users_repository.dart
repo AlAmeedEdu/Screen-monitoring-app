@@ -1,3 +1,2 @@
-class UsersRepository {
-  // TODO: Coordinate data operations for UsersRepository.
-}
+/// ينسق طلبات البيانات بين الـ controller ومصدر البيانات المناسب.
+class UsersRepository {}

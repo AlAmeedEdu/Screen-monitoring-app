@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constants/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_shadows.dart';
 import '../../../core/theme/app_text_styles.dart';
@@ -14,13 +14,14 @@ import '../widgets/attendance_summary_card.dart';
 import '../widgets/home_header_card.dart';
 import '../widgets/latest_teacher_login_card.dart';
 
+/// يبني شاشة HomeView ويربطها بالـ controller أو البيانات الخاصة بها.
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.colors.canvas,
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: Obx(() {
@@ -105,6 +106,7 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
+/// يعرض بطاقة واجهة قابلة لإعادة الاستخدام داخل هذه الميزة.
 class _SectionCard extends StatelessWidget {
   const _SectionCard(
       {required this.title, required this.height, required this.child});
@@ -119,9 +121,9 @@ class _SectionCard extends StatelessWidget {
       height: height,
       padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
       decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.colors.surface,
           borderRadius: BorderRadius.circular(AppRadius.lg),
-          boxShadow: AppShadows.soft),
+          boxShadow: AppShadows.softFor(context)),
       child: Column(
         children: [
           Row(
@@ -132,18 +134,18 @@ class _SectionCard extends StatelessWidget {
                 height: 30,
                 width: 30,
                 decoration: BoxDecoration(
-                    color: AppColors.secondary50,
+                    color: context.colors.surfaceSoft,
                     borderRadius: BorderRadius.circular(AppRadius.sm)),
-                child: const Center(
+                child: Center(
                     child: AppSvgIcon(AppAssets.buildingsIcon,
-                        color: Color(0xFF42AEB7), size: 16)),
+                        color: context.colors.accent, size: 16)),
               ),
               const SizedBox(width: 8),
               Text(title,
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
                   style: AppTextStyles.subtitle.copyWith(
-                      color: AppColors.textPrimary,
+                      color: context.colors.primaryText,
                       fontWeight: FontWeight.w500)),
             ],
           ),
@@ -155,6 +157,7 @@ class _SectionCard extends StatelessWidget {
   }
 }
 
+/// يمثل جزءا داخليا صغيرا من الواجهة لفصل التفاصيل عن الملف الرئيسي.
 class _HomeHero extends StatelessWidget {
   const _HomeHero({required this.userName, required this.subtitle});
 

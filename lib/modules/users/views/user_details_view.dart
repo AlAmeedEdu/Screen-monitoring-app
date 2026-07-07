@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/user_details_controller.dart';
 
+/// يبني شاشة UserDetailsView ويربطها بالـ controller أو البيانات الخاصة بها.
 class UserDetailsView extends GetView<UserDetailsController> {
   const UserDetailsView({super.key});
 

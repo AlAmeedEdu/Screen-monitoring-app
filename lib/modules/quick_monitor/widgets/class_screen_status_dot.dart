@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يمثل ClassScreenStatusDot كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
 class ClassScreenStatusDot extends StatelessWidget {
   const ClassScreenStatusDot({super.key});
 

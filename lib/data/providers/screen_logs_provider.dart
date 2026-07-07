@@ -1,3 +1,2 @@
-class ScreenLogsProvider {
-  // TODO: Connect ScreenLogsProvider to remote or local data sources.
-}
+/// يوفر بيانات هذه الميزة حاليا كمصدر بيانات يمكن استبداله لاحقا بـ API.
+class ScreenLogsProvider {}

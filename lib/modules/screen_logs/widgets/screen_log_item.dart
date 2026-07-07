@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يمثل ScreenLogItem كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
 class ScreenLogItem extends StatelessWidget {
   const ScreenLogItem({super.key});
 

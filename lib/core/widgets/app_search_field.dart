@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../constants/app_assets.dart';
-import '../theme/app_colors.dart';
+import '../theme/app_palette.dart';
 import '../theme/app_radius.dart';
 import '../theme/app_text_styles.dart';
 import 'app_svg_icon.dart';
 
+/// يعرض حقل إدخال موحد الشكل ويستقبل النص من المستخدم.
 class AppSearchField extends StatelessWidget {
   const AppSearchField({
     required this.hintText,
@@ -24,13 +25,13 @@ class AppSearchField extends StatelessWidget {
         height: 51,
         padding: const EdgeInsets.symmetric(horizontal: 14),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.colors.surface,
           borderRadius: BorderRadius.circular(AppRadius.pill),
         ),
         child: Row(
           children: [
-            const AppSvgIcon(AppAssets.searchIcon,
-                color: AppColors.primary, size: 22),
+            AppSvgIcon(AppAssets.searchIcon,
+                color: context.colors.icon, size: 22),
             const SizedBox(width: 10),
             Expanded(
               child: TextField(
@@ -39,14 +40,14 @@ class AppSearchField extends StatelessWidget {
                 textDirection: TextDirection.rtl,
                 decoration: InputDecoration.collapsed(
                   hintText: hintText,
-                  hintStyle:
-                      AppTextStyles.body.copyWith(color: AppColors.textHint),
+                  hintStyle: AppTextStyles.body
+                      .copyWith(color: context.colors.hintText),
                 ),
               ),
             ),
             const SizedBox(width: 10),
-            const AppSvgIcon(AppAssets.tuningIcon,
-                color: Color(0xFF42AEB7), size: 24),
+            AppSvgIcon(AppAssets.tuningIcon,
+                color: context.colors.accent, size: 24),
           ],
         ),
       ),

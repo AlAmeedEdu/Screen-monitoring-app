@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يمثل TimetableDaySelector كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
 class TimetableDaySelector extends StatelessWidget {
   const TimetableDaySelector({super.key});
 

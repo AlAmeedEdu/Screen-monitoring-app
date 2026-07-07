@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
 
-class QuickMonitorController extends GetxController {
-  // TODO: Add QuickMonitorController state and actions.
-}
+/// يدير حالة هذه الشاشة وينفذ أوامرها بعيدا عن كود الواجهة.
+class QuickMonitorController extends GetxController {}

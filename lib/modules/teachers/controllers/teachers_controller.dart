@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
 
-class TeachersController extends GetxController {
-  // TODO: Add TeachersController state and actions.
-}
+/// يدير حالة هذه الشاشة وينفذ أوامرها بعيدا عن كود الواجهة.
+class TeachersController extends GetxController {}

@@ -1,7 +1,9 @@
 import '../../core/constants/app_assets.dart';
 import '../models/home_dashboard_model.dart';
 
+/// يوفر بيانات هذه الميزة حاليا كمصدر بيانات يمكن استبداله لاحقا بـ API.
 class HomeProvider {
+  /// يجلب البيانات المطلوبة ويحدث الحالة المرتبطة بها.
   Future<HomeDashboardModel> getDashboard() async {
     await Future<void>.delayed(const Duration(milliseconds: 250));
 

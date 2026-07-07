@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
 
-class ScreenLogsController extends GetxController {
-  // TODO: Add ScreenLogsController state and actions.
-}
+/// يدير حالة هذه الشاشة وينفذ أوامرها بعيدا عن كود الواجهة.
+class ScreenLogsController extends GetxController {}

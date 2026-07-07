@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg_icon.dart';
 
+/// يمثل ScreenInfoRow كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
 class ScreenInfoRow extends StatelessWidget {
   const ScreenInfoRow({
     required this.title,
@@ -12,12 +13,18 @@ class ScreenInfoRow extends StatelessWidget {
     required this.iconAsset,
     super.key,
     this.textDirection = TextDirection.rtl,
+    this.valueColor,
+    this.titleColor,
+    this.iconColor,
   });
 
   final String title;
   final String value;
   final String iconAsset;
   final TextDirection textDirection;
+  final Color? valueColor;
+  final Color? titleColor;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +36,15 @@ class ScreenInfoRow extends StatelessWidget {
             height: 30,
             width: 30,
             decoration: BoxDecoration(
-              color: AppColors.secondary50,
+              color: context.colors.surfaceSoft,
               borderRadius: BorderRadius.circular(AppRadius.sm),
             ),
             child: Center(
-              child: AppSvgIcon(iconAsset, size: 16, color: AppColors.primary),
+              child: AppSvgIcon(
+                iconAsset,
+                size: 16,
+                color: iconColor ?? context.colors.accent,
+              ),
             ),
           ),
           const SizedBox(width: 8),
@@ -52,8 +63,8 @@ class ScreenInfoRow extends StatelessWidget {
                     textAlign: textDirection == TextDirection.rtl
                         ? TextAlign.right
                         : TextAlign.left,
-                    style: AppTextStyles.tiny
-                        .copyWith(color: AppColors.textSecondary),
+                    style: AppTextStyles.tiny.copyWith(
+                        color: titleColor ?? context.colors.secondaryText),
                   ),
                   const SizedBox(height: 6),
                   Text(
@@ -64,7 +75,7 @@ class ScreenInfoRow extends StatelessWidget {
                         ? TextAlign.right
                         : TextAlign.left,
                     style: AppTextStyles.tiny.copyWith(
-                      color: AppColors.textPrimary,
+                      color: valueColor ?? context.colors.primaryText,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

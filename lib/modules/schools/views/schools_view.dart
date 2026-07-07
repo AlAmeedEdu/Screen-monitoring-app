@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/schools_controller.dart';
 
+/// يبني شاشة SchoolsView ويربطها بالـ controller أو البيانات الخاصة بها.
 class SchoolsView extends GetView<SchoolsController> {
   const SchoolsView({super.key});
 

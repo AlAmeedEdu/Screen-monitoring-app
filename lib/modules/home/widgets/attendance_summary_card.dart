@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg_icon.dart';
 import '../../../data/models/home_dashboard_model.dart';
 
+/// يعرض بطاقة واجهة قابلة لإعادة الاستخدام داخل هذه الميزة.
 class AttendanceSummaryCard extends StatelessWidget {
   const AttendanceSummaryCard({required this.summary, super.key});
 
@@ -14,10 +15,10 @@ class AttendanceSummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final accent =
-        summary.isPositive ? const Color(0xFF39A8B3) : AppColors.danger;
+    final colors = context.colors;
+    final accent = summary.isPositive ? colors.accent : colors.danger;
     final background =
-        summary.isPositive ? AppColors.secondary50 : AppColors.dangerSoft;
+        summary.isPositive ? colors.surfaceSoft : colors.dangerSoft;
 
     return Container(
       height: 67,

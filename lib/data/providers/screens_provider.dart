@@ -1,7 +1,9 @@
 import '../../core/enums/screen_status.dart';
 import '../models/monitor_item_model.dart';
 
+/// يوفر بيانات هذه الميزة حاليا كمصدر بيانات يمكن استبداله لاحقا بـ API.
 class ScreensProvider {
+  /// يجلب البيانات المطلوبة ويحدث الحالة المرتبطة بها.
   Future<List<MonitorItemModel>> getScreens() async {
     await Future<void>.delayed(const Duration(milliseconds: 250));
 

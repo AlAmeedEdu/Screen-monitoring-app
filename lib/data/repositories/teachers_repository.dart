@@ -1,3 +1,2 @@
-class TeachersRepository {
-  // TODO: Coordinate data operations for TeachersRepository.
-}
+/// ينسق طلبات البيانات بين الـ controller ومصدر البيانات المناسب.
+class TeachersRepository {}

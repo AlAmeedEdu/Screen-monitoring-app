@@ -1,3 +1,4 @@
+/// يجمع قيما أو عناصر عامة تستخدم في أكثر من مكان داخل التطبيق.
 abstract final class AppRoutes {
   static const splash = '/splash';
   static const onboarding = '/onboarding';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يمثل SchoolInfoRow كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
 class SchoolInfoRow extends StatelessWidget {
   const SchoolInfoRow({super.key});
 

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/timetable_controller.dart';
 
+/// يبني شاشة TimetableView ويربطها بالـ controller أو البيانات الخاصة بها.
 class TimetableView extends GetView<TimetableController> {
   const TimetableView({super.key});
 

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
 
-class RolesController extends GetxController {
-  // TODO: Add RolesController state and actions.
-}
+/// يدير حالة هذه الشاشة وينفذ أوامرها بعيدا عن كود الواجهة.
+class RolesController extends GetxController {}

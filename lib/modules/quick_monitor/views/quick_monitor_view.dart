@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/quick_monitor_controller.dart';
 
+/// يبني شاشة QuickMonitorView ويربطها بالـ controller أو البيانات الخاصة بها.
 class QuickMonitorView extends GetView<QuickMonitorController> {
   const QuickMonitorView({super.key});
 

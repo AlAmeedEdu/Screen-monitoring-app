@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يعرض بطاقة واجهة قابلة لإعادة الاستخدام داخل هذه الميزة.
 class MonitorClassCard extends StatelessWidget {
   const MonitorClassCard({super.key});
 

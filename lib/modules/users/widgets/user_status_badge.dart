@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يعرض شارة حالة مختصرة بلون ونص مناسبين.
 class UserStatusBadge extends StatelessWidget {
   const UserStatusBadge({super.key});
 

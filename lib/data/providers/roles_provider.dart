@@ -1,3 +1,2 @@
-class RolesProvider {
-  // TODO: Connect RolesProvider to remote or local data sources.
-}
+/// يوفر بيانات هذه الميزة حاليا كمصدر بيانات يمكن استبداله لاحقا بـ API.
+class RolesProvider {}

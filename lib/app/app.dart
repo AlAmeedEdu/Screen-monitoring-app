@@ -1,10 +1,11 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'app_bindings.dart';
 import 'app_pages.dart';
 import '../core/theme/app_theme.dart';
 
+/// يجمع قيما أو عناصر عامة تستخدم في أكثر من مكان داخل التطبيق.
 class ScreenMonitoringApp extends StatelessWidget {
   const ScreenMonitoringApp({super.key});
 
@@ -14,6 +15,8 @@ class ScreenMonitoringApp extends StatelessWidget {
       title: 'Screen Monitoring App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
+      themeMode: ThemeMode.light,
       locale: const Locale('ar'),
       initialBinding: AppBindings(),
       initialRoute: AppPages.initial,

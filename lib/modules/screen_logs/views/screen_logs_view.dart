@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/screen_logs_controller.dart';
 
+/// يبني شاشة ScreenLogsView ويربطها بالـ controller أو البيانات الخاصة بها.
 class ScreenLogsView extends GetView<ScreenLogsController> {
   const ScreenLogsView({super.key});
 

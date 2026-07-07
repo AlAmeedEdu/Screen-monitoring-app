@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg_icon.dart';
 import '../../../data/models/home_dashboard_model.dart';
 
+/// يعرض بطاقة واجهة قابلة لإعادة الاستخدام داخل هذه الميزة.
 class AbsentTeacherCard extends StatelessWidget {
   const AbsentTeacherCard({required this.login, super.key});
 
@@ -18,7 +19,7 @@ class AbsentTeacherCard extends StatelessWidget {
       height: 79,
       padding: const EdgeInsetsDirectional.fromSTEB(10, 8, 8, 8),
       decoration: BoxDecoration(
-        color: AppColors.secondary50,
+        color: context.colors.surfaceSoft,
         borderRadius: BorderRadius.circular(AppRadius.md),
       ),
       child: Directionality(
@@ -38,26 +39,30 @@ class AbsentTeacherCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.right,
                       textDirection: TextDirection.rtl,
-                      style: AppTextStyles.body
-                          .copyWith(fontWeight: FontWeight.w500),
+                      style: AppTextStyles.body.copyWith(
+                        color: context.colors.primaryText,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Row(
                       textDirection: TextDirection.rtl,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const AppSvgIcon(AppAssets.userIcon,
-                            size: 15, color: Color(0xFF62BBC1)),
+                        AppSvgIcon(AppAssets.userIcon,
+                            size: 15, color: context.colors.accent),
                         const SizedBox(width: 3),
                         Text('الاستاذ:',
                             style: AppTextStyles.caption
-                                .copyWith(color: const Color(0xFF62BBC1))),
+                                .copyWith(color: context.colors.accent)),
                         const SizedBox(width: 8),
                         Text(login.teacherName,
                             textAlign: TextAlign.right,
                             textDirection: TextDirection.rtl,
-                            style: AppTextStyles.caption
-                                .copyWith(fontWeight: FontWeight.w500)),
+                            style: AppTextStyles.caption.copyWith(
+                              color: context.colors.primaryText,
+                              fontWeight: FontWeight.w500,
+                            )),
                       ],
                     ),
                   ],

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_shadows.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg_icon.dart';
 import '../../../core/widgets/blurred_header_image.dart';
 
+/// يعرض بطاقة واجهة قابلة لإعادة الاستخدام داخل هذه الميزة.
 class HomeHeaderCard extends StatelessWidget {
   const HomeHeaderCard(
       {required this.userName, required this.subtitle, super.key});
@@ -31,10 +33,12 @@ class HomeHeaderCard extends StatelessWidget {
             left: 16,
             top: 51,
             child: Material(
-              color: AppColors.surface,
+              color: context.colors.surface,
               borderRadius: BorderRadius.circular(AppRadius.md),
               elevation: 1,
-              shadowColor: Colors.black12,
+              shadowColor: context.isAppDarkMode
+                  ? Colors.black.withValues(alpha: .36)
+                  : Colors.black12,
               child: InkWell(
                 onTap: () {},
                 borderRadius: BorderRadius.circular(AppRadius.md),
@@ -80,7 +84,9 @@ class HomeHeaderCard extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.title.copyWith(
-                              fontSize: 19, fontWeight: FontWeight.w800),
+                              color: context.colors.primaryText,
+                              fontSize: 19,
+                              fontWeight: FontWeight.w800),
                         ),
                         const SizedBox(height: 5),
                         Text(
@@ -88,7 +94,7 @@ class HomeHeaderCard extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.tiny
-                              .copyWith(color: const Color(0xFF5F6A6C)),
+                              .copyWith(color: context.colors.secondaryText),
                         ),
                       ],
                     ),
@@ -98,10 +104,10 @@ class HomeHeaderCard extends StatelessWidget {
                     height: 46,
                     width: 46,
                     padding: const EdgeInsets.all(3),
-                    decoration: const BoxDecoration(
-                        color: AppColors.surface,
+                    decoration: BoxDecoration(
+                        color: context.colors.surface,
                         shape: BoxShape.circle,
-                        boxShadow: AppShadows.soft),
+                        boxShadow: AppShadows.softFor(context)),
                     child: ClipOval(
                         child:
                             Image.asset(AppAssets.avatar, fit: BoxFit.cover)),

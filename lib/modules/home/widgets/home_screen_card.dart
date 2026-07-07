@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_palette.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../data/models/home_dashboard_model.dart';
 
+/// يعرض بطاقة واجهة قابلة لإعادة الاستخدام داخل هذه الميزة.
 class HomeScreenCard extends StatelessWidget {
   const HomeScreenCard({required this.stat, super.key});
 
@@ -16,7 +17,7 @@ class HomeScreenCard extends StatelessWidget {
       height: 60,
       padding: const EdgeInsetsDirectional.only(start: 14, end: 10),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(AppRadius.md),
       ),
       child: Stack(
@@ -41,7 +42,7 @@ class HomeScreenCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.right,
                     style: AppTextStyles.caption.copyWith(
-                      color: AppColors.textPrimary,
+                      color: context.colors.primaryText,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -50,7 +51,7 @@ class HomeScreenCard extends StatelessWidget {
                     stat.value,
                     textAlign: TextAlign.right,
                     style: AppTextStyles.caption
-                        .copyWith(color: AppColors.textSecondary),
+                        .copyWith(color: context.colors.secondaryText),
                   ),
                 ],
               ),

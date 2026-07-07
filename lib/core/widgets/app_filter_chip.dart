@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يجمع قيما أو عناصر عامة تستخدم في أكثر من مكان داخل التطبيق.
 class AppFilterChip extends StatelessWidget {
   const AppFilterChip({super.key});
 

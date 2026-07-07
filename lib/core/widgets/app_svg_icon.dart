@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../theme/app_colors.dart';
 
+/// يعرض عنصر تفاعل صغير موحد الشكل داخل الواجهة.
 class AppSvgIcon extends StatelessWidget {
   const AppSvgIcon(
     this.asset, {

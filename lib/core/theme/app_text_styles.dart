@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يجمع قيما أو عناصر عامة تستخدم في أكثر من مكان داخل التطبيق.
 abstract final class AppTextStyles {
   static const title =
       TextStyle(fontSize: 20, fontWeight: FontWeight.w700, height: 1.2);

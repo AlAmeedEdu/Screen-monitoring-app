@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// يمثل OnboardingPageItem كجزء من بنية المشروع ويجمع المسؤولية الخاصة به في مكان واحد.
 class OnboardingPageItem extends StatelessWidget {
   const OnboardingPageItem({super.key});
 
